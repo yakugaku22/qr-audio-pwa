@@ -1,3 +1,14 @@
+document.addEventListener("DOMContentLoaded", function () {
+    function onScanSuccess(decodedText) {
+        document.getElementById("qr-result").innerText = "QRコード読み取り成功: " + decodedText;
+        playAudioFromDB(decodedText);  // QRコードのデータをファイル名として再生
+    }
+
+    new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 })
+        .render(onScanSuccess);
+});
+
+
 let audio = new Audio();
 
 // オンラインかオフラインかをチェック
