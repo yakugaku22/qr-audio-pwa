@@ -5,7 +5,7 @@ self.addEventListener("install", (event) => {
             return cache.addAll([
                 "index.html",
                 "script.js",
-                "audio/sample.mp3" // 音声ファイルをキャッシュ
+                "/ja/music/q2iR" // 音声ファイルをキャッシュ
             ]);
         })
     );
