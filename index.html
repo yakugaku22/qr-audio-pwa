@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコード音声プレイヤー</title>
-    <script src="https://unpkg.com/html5-qrcode" defer></script>
-    <script src="script.js" defer></script>
-    <link rel="manifest" href="manifest.json">
+    <title>音声再生</title>
 </head>
 <body>
-    <h1>QRコードで音声再生</h1>
-    <div id="qr-reader" style="width: 300px;"></div>
-    <p id="qr-result">QRコードをスキャンしてください</p>
-    <audio id="audioPlayer" controls></audio>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js');
-        }
-    </script>
+    <h1>オンライン/オフラインで音声再生</h1>
+
+    <button onclick="playAudio()">音声再生</button>
+
+    <script src="script.js"></script> <!-- 音声再生の処理 -->
+    <script src="service-worker.js"></script> <!-- Service Worker -->
 </body>
 </html>
