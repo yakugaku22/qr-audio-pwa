@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .render(onScanSuccess);
 });
 
-
 let audio = new Audio();
 
 // オンラインかオフラインかをチェック
