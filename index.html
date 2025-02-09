@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコード音声再生</title>
+    <title>QRコード音声プレイヤー</title>
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <input type="file" accept="audio/*" id="audioFile">
-    <button onclick="playAudio()">再生</button>
+    <h1>QRコードで音声再生</h1>
+    <div id="qr-reader" style="width: 300px;"></div>
+    <p id="qr-result">QRコードをスキャンしてください</p>
+    <audio id="audioPlayer" controls></audio>
     <script>
-        let audio = new Audio();
-
-        function playAudio() {
-            let fileInput = document.getElementById("audioFile");
-            if (fileInput.files.length > 0) {
-                let file = URL.createObjectURL(fileInput.files[0]);
-                audio.src = file;
-                audio.play();
-            }
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
         }
     </script>
 </body>
