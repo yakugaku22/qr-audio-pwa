@@ -1,12 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-    function onScanSuccess(decodedText) {
-        document.getElementById("qr-result").innerText = "読み取ったパス: " + decodedText;
-        
-        let audioPlayer = document.getElementById("audioPlayer");
-        audioPlayer.src = decodedText; // ローカルの音声ファイルを指定
-        audioPlayer.play();
-    }
+let audio = new Audio();
 
-    new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 })
-        .render(onScanSuccess);
+// オンラインかオフラインかをチェック
+if (navigator.onLine) {
+    // オンライン時：ネットワークから音声を再生
+    audio.src = "https://example.com/audio/sample.mp3"; // サーバー上の音声URL
+} else {
+    // オフライン時：キャッシュされた音声を再生
+    audio.src = "/audio/sample.mp3";  // PWA内に保存されている音声ファイル
+}
+
+audio.play().catch((error) => {
+    console.error("音声の再生に失敗しました", error);
 });
